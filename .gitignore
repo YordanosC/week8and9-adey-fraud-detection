@@ -1,0 +1,19 @@
+# Data directories
+data/raw/*
+data/processed/*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment
+.env
+venv/
+
+# Jupyter
+*.ipynb_checkpoints
+
+# Docker
+*.log
