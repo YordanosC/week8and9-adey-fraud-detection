@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection API</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Fraud Detection API</h1>
+    <p>Click the buttons below to see live data from each endpoint:</p>
+    <button onclick="fetchData('/api/fraud_summary')">Fraud Summary</button>
+    <button onclick="fetchData('/api/fraud_trends')">Fraud Trends</button>
+    <button onclick="fetchData('/api/fraud_by_location')">Fraud by Location</button>
+    <button onclick="fetchData('/api/fraud_by_device_browser')">Fraud by Device and Browser</button>
+
+    <div id="response">
+        <h3>Response:</h3>
+        <div id="responseData"></div>
+    </div>
+
+    <script>
+        function fetchData(endpoint) {
+            fetch(endpoint)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('response').style.display = 'block';
+                    document.getElementById('responseData').innerHTML = data;
+                })
+                .catch(error => {
+                    document.getElementById('response').style.display = 'block';
+                    document.getElementById('responseData').textContent = 'Error fetching data: ' + error;
+                });
+        }
+    </script>
+</body>
+</html>
